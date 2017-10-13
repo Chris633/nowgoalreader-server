@@ -22,7 +22,7 @@ def basketball_score():
 <p>Not found parameter 'europeId'. Did you type 'europeId'?</p>
 '''
     else:
-        return '<?xml  version="1.0" encoding="UTF-8"?><root><result>success</result>' + entrance.start("basketball", "score", request.args.get('europeId')) + '</root>'
+        return entrance.start("basketball", "score", request.args.get('europeId'))
 
 
 @app.route('/nowgoalreader/basketball/odds', methods=['GET'])
@@ -34,7 +34,7 @@ def basketball_odds():
 <p>Not found parameter 'europeId' or 'companyId'. Did you type 'europeId' and 'companyId'?</p>
 '''
     else:
-        return '<?xml  version="1.0" encoding="UTF-8"?><root><result>success</result>' + entrance.start("basketball", "odds", request.args.get('europeId'), request.args.get('companyId')) + '</root>'
+        return entrance.start("basketball", "odds", request.args.get('europeId'), request.args.get('companyId'))
 
 
 @app.route('/nowgoalreader/soccer/score', methods=['GET'])
@@ -46,7 +46,7 @@ def soccer_socre():
 <p>Not found parameter 'europeId'. Did you type 'europeId'?</p>
 '''
     else:
-        return '<?xml  version="1.0" encoding="UTF-8"?><root><result>success</result>' + entrance.start("soccer", "score", request.args.get('europeId')) + '</root>'
+        return entrance.start("soccer", "score", request.args.get('europeId'))
 
 
 @app.route('/nowgoalreader/soccer/inplay', methods=['GET'])
@@ -58,7 +58,7 @@ def soccer_inplay():
 <p>Not found parameter 'europeId' or 'companyId'. Did you type 'europeId' and 'companyId'?</p>
 '''
     else:
-        return '<?xml  version="1.0" encoding="UTF-8"?><root><result>success</result>' + entrance.start("soccer", "inplay", request.args.get('europeId'), request.args.get('companyId')) + '</root>'
+        return entrance.start("soccer", "inplay", request.args.get('europeId'), request.args.get('companyId'))
 
 
 @app.route('/nowgoalreader/soccer/early', methods=['GET'])
@@ -70,7 +70,7 @@ def soccer_early():
 <p>Not found parameter 'europeId' or 'companyId'. Did you type 'europeId' and 'companyId'?</p>
 '''
     else:
-        return '<?xml  version="1.0" encoding="UTF-8"?><root><result>success</result>' + entrance.start("soccer", "early", request.args.get('europeId'), request.args.get('companyId')) + '</root>'
+        return entrance.start("soccer", "early", request.args.get('europeId'), request.args.get('companyId'))
 
 
 @app.errorhandler(404)

@@ -5,8 +5,9 @@ from xml.dom import minidom
 
 if __name__ == '__main__':
     ARGS = sys.argv
-    client = etcd.Client(host=(('127.0.0.1', 2379), ('192.168.137.100', 2379), ('192.168.137.101', 2379), ('192.168.137.102', 2379)),
-                         allow_reconnect=True)
+    # client = etcd.Client(host=(('192.168.137.100', 2379), ('192.168.137.101', 2379), ('192.168.137.102', 2379)),
+    #                      allow_reconnect=True)
+    client = etcd.Client(host='127.0.0.1', port=2379)
     if len(ARGS) == 4:
         url = "http://" + client.read('nowgoalreader').value + "/nowgoalreader/" + ARGS[1] + "/" + ARGS[2] + \
               "?europeId=" + ARGS[3]
