@@ -1,5 +1,6 @@
 import sys
-import ConfigParser
+from ConfigParser import ConfigParser
+from register_etcd.register import regist
 from flask import Flask, request, make_response
 from reader import entrance
 
@@ -8,8 +9,9 @@ reload(sys)
 sys.setdefaultencoding(default_encoding)
 
 app = Flask(__name__)
-conf = ConfigParser.ConfigParser()
+conf = ConfigParser()
 conf.read("nowgoalreader_server.conf")
+
 
 @app.route('/nowgoalreader/basketball/score', methods={'GET'})
 def basketball_score():
@@ -73,7 +75,6 @@ def soccer_early():
 
 @app.errorhandler(404)
 def not_found(error):
-    log.error("!!!")
     return make_response('''<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <title>Error</title>
 <h1>Main Parameter Error</h1>
@@ -85,4 +86,5 @@ def not_found(error):
 <p>'/nowgoalreader/basketball/odds?europeId=***&companyId=***'</p>''', 404)
 
 if __name__ == '__main__':
+    regist()
     app.run(host=conf.get("server", "host"), port=conf.get("server", "port"))
